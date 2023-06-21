@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.MainActivity">
+
+    <ScrollView
+        android:id="@+id/main_screen_sv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_screen_content_bg"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main_screen_root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary_colour"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+
+            <TextView
+                android:id="@+id/main_screen_dashboard_tv"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:gravity="start|center_vertical"
+                android:text="@string/main_screen_dashboard_tv_string"
+                android:textAlignment="gravity"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@id/dashboard_main_screen_side_iv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/dashboard_main_screen_side_iv"
+                android:layout_width="40dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="16dp"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="@id/main_screen_dashboard_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/main_screen_dashboard_tv"
+                app:srcCompat="@drawable/main_screen_dashboard_icon" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/main_screen_content_root"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/main_screen_content_rounded_bg"
+                android:backgroundTint="@color/main_screen_content_bg"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:padding="16dp"
+                app:layout_constraintEnd_toEndOf="@id/main_screen_dashboard_tv"
+                app:layout_constraintStart_toStartOf="@id/main_screen_dashboard_tv"
+                app:layout_constraintTop_toBottomOf="@id/main_screen_dashboard_tv">
+
+                <TextView
+                    android:id="@+id/main_screen_day_greeting_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|center_vertical"
+                    android:text="Good Morning"
+                    android:textColor="@color/text_color"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/main_screen_user_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="TextView"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@id/main_screen_day_greeting_tv"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@id/main_screen_day_greeting_tv"
+                    app:layout_constraintTop_toBottomOf="@id/main_screen_day_greeting_tv" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:id="@+id/main_screen_mphil_line_chart_cv"
+                    app:cardCornerRadius="16dp"
+
+                    app:layout_constraintEnd_toEndOf="@id/main_screen_user_name_tv"
+                    app:layout_constraintStart_toStartOf="@id/main_screen_user_name_tv"
+                    app:layout_constraintTop_toBottomOf="@id/main_screen_user_name_tv">
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/main_screen_mphil_line_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="360dp"
+                    android:layout_margin="12dp"
+                     />
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/main_screen_app_stats_hrv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="@id/main_screen_mphil_line_chart_cv"
+                    app:layout_constraintStart_toStartOf="@id/main_screen_mphil_line_chart_cv"
+                    app:layout_constraintTop_toBottomOf="@id/main_screen_mphil_line_chart_cv">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <Button
+                    android:id="@+id/main_screen_view_analytics_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:backgroundTint="@color/main_screen_content_bg"
+                    android:padding="16dp"
+                    android:text="@string/main_screen_view_analytics_tv_string"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:icon="@drawable/price_boost_icon"
+                    app:iconGravity="textStart"
+                    app:iconTint="@color/black"
+                    app:layout_constraintEnd_toEndOf="@id/main_screen_app_stats_hrv"
+                    app:layout_constraintStart_toStartOf="@id/main_screen_app_stats_hrv"
+                    app:layout_constraintTop_toBottomOf="@id/main_screen_app_stats_hrv" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/main_screen_links_tabs_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@color/main_screen_content_bg"
+                    app:layout_constraintEnd_toStartOf="@id/main_screen_search_links_tabs_iv"
+                    app:layout_constraintStart_toStartOf="@id/main_screen_view_analytics_tv"
+                    app:layout_constraintTop_toBottomOf="@id/main_screen_view_analytics_tv"
+                    app:tabBackground="@drawable/links_tabs_bg"
+                    app:tabIndicatorHeight="0dp"
+                    app:tabSelectedTextColor="@color/white" />
+
+                <ImageView
+                    android:id="@+id/main_screen_search_links_tabs_iv"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="@id/main_screen_links_tabs_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/main_screen_links_tabs_layout"
+                    app:srcCompat="@drawable/search_box_icon" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/main_screen_links_tabs_vp"
+                    android:layout_width="match_parent"
+                    android:layout_height="480dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/main_screen_links_tabs_layout"
+                    app:layout_constraintTop_toBottomOf="@id/main_screen_links_tabs_layout" />
+
+                <Button
+                    android:id="@+id/main_screen_view_all_links_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:backgroundTint="@color/main_screen_content_bg"
+                    android:padding="16dp"
+                    android:text="@string/main_screen_view_all_links_tv_string"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:icon="@drawable/link_icon"
+                    app:iconGravity="textStart"
+                    app:iconTint="@color/black"
+                    app:layout_constraintEnd_toEndOf="@id/main_screen_links_tabs_vp"
+                    app:layout_constraintStart_toStartOf="@id/main_screen_links_tabs_vp"
+                    app:layout_constraintTop_toBottomOf="@id/main_screen_links_tabs_vp" />
+
+                <ImageView
+                    android:id="@+id/main_screen_talk_with_us_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@id/main_screen_view_all_links_tv"
+                    app:layout_constraintStart_toStartOf="@id/main_screen_view_all_links_tv"
+                    app:layout_constraintTop_toBottomOf="@id/main_screen_view_all_links_tv"
+                    app:srcCompat="@drawable/talk_with_us_vector" />
+
+                <ImageView
+                    android:id="@+id/main_screen_faq_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@id/main_screen_talk_with_us_tv"
+                    app:layout_constraintStart_toStartOf="@id/main_screen_talk_with_us_tv"
+                    app:layout_constraintTop_toBottomOf="@id/main_screen_talk_with_us_tv"
+                    app:srcCompat="@drawable/faq_icon" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/main_screen_pb"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+</FrameLayout>
